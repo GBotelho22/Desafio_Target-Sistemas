@@ -16,11 +16,14 @@ def valores_acima_m(dados):
     valores_validos = [valor for valor in dados if valor > 0]
     media = sum(valores_validos)/len(valores_validos)
     return sum(1 for valor in dados if valor > media)
-    
 
-arquivo = open("faturamento_mensal.json","r")
+def extrair_valores(dados):
+    return [item["valor"]for item in dados]    
+
+arquivo = open("dados.json","r")
 dados = json.load(arquivo)
-valores = dados["faturamento_mensal"]
+valores = extrair_valores(dados)
+
 print(menor_valor(valores))
 print(maior_valor(valores))
 print(valores_acima_m(valores))
